@@ -1,0 +1,32 @@
+function animateNumberCounter(obj, start, end, duration, decimalPlaces = 0) {
+  let startTimestamp = null;
+
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    const value = start + progress * (end - start);
+    obj.innerHTML = value.toFixed(decimalPlaces);
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    }
+  };
+
+  window.requestAnimationFrame(step);
+}
+
+setTimeout(() => {
+  document.querySelectorAll('.animate-number-counter').forEach((obj) => {
+    if (isNaN(parseFloat(obj.dataset.value)) || !isFinite(obj.dataset.value)) {
+      return;
+    }
+
+    let decimalPlaces = 0;
+    if (obj.dataset.value.indexOf('.') !== -1) {
+      decimalPlaces = obj.dataset.value.split('.')[1].length;
+    }
+
+    animateNumberCounter(obj, 0, obj.dataset.value, 1000, decimalPlaces);
+  });
+}, 400);
+
+window.Zoom('.zoomable');

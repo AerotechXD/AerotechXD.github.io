@@ -11,9 +11,9 @@
         font-family: 'Inter', sans-serif;
         /* Changed background to gradient from black to green */
         background: linear-gradient(to bottom, #000000, #10b981);
-        min-height: 100vh; /* Ensure full viewport height */
-        margin: 0; /* Remove default body margin */
-        display: flex; /* For centering the content */
+        min-height: 100vh;
+        margin: 0;
+        display: flex;
         justify-content: center;
         align-items: center;
       }
@@ -27,7 +27,6 @@
         line-height: 1.4;
         text-align: center;
         position: relative;
-        /* Removed margin, using body flexbox for centering */
         padding: 20px;
         box-sizing: border-box;
       }
@@ -50,11 +49,28 @@
         align-items: center;
         justify-content: center;
       }
+      #rounded-text-box textarea {
+        width: 100%;
+        height: 100%;
+        resize: none;
+        border: none;
+        background: transparent;
+        color: white;
+        font-size: 20px;
+        line-height: 1.4;
+        text-align: center;
+        padding: 0;
+        font-family: 'Inter', sans-serif;
+      }
+      #rounded-text-box textarea:focus {
+        outline: none;
+      }
     </style>
 </head>
 <body class="bg-gray-100">
     <div id="rounded-text-box">
-        <p>This is a rounded rectangle text box with a gradient background. The text is centered and wraps within the rounded rectangle.  The background color transitions from green to black.</p>
+        <textarea placeholder="Type here..."></textarea>
     </div>
 </body>
 </html>
+
